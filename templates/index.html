@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mars ish </title>
+  <title>Mission to Mars </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -16,12 +16,45 @@
       <p>Latest Mars News</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
-    <img src="{{ mars_info.img_url }}" alt="Mars">
-    <h2>The Latest Mars News</h2>
-    <h3>{{ mars_info.news_title }}</h3>
-    <h3>Min Temp: {{ mars_info.news_blurb }}</h3>
+    <img src="{{ marsdata.img_url }}" alt="Mars Image">
+    <h2>{{ marsdata.headline }}</h2>
+    <h3>{{ marsdata.blurb }}</h3>
+    <hr class="my-4">
   </div>
+
+  <div class="container-fluid"> 
+    <div class="p-3 mb-2 bg-white text-dark">
+      <h2> Mars Quick Facts </h2>
+      <div class="table-responsive{-sm|-md|-lg|-xl}">
+            {{ marsdata.mars_table | safe }}
+      </div>
+    </div>
+    <hr class="my-4">
   </div>
+
+   <div class="container-fluid">
+    <div class="p-3 mb-2 bg-white text-dark">
+      <h2>Mars Hemispheres</h2>
+    <div class="row">
+
+        <!-- Loop through hemispheres dictionary with images and titles -->
+        {% for hemisphere in marsdata.hemisphere_urls %}
+            <div class="col-md-6">
+              <div class="caption">
+                <h3><b>{{ hemisphere.title }}</b></h3>
+               </div>
+                <img src="{{ hemisphere.url }}" style="max-width:100%; max-height: auto; margin-bottom: 30px;" alt="Hemisphere Image">
+                    
+            </div>
+        {% endfor %}
+    </div> 
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
 </body>
 
 </html>
