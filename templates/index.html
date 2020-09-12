@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars </title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  <style>
+    h2 {text-align:center}
+    h4 {color:gray; text-align: center}
+  </style>
 </head>
 
 <body>
@@ -16,21 +20,27 @@
       <p>Latest Mars News</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
-    <img src="{{ marsdata.img_url }}" alt="Mars Image">
-    <h2>{{ marsdata.headline }}</h2>
-    <h3>{{ marsdata.blurb }}</h3>
-    <hr class="my-4">
-  </div>
-
-  <div class="container-fluid"> 
-    <div class="p-3 mb-2 bg-white text-dark">
-      <h2> Mars Quick Facts </h2>
-      <div class="table-responsive{-sm|-md|-lg|-xl}">
-            {{ marsdata.mars_table | safe }}
-      </div>
+    <div class="container-fluid">
+      <div class="p-3 mb-2 bg-white text-dark">
+        <section class="row">
+          <div class="col-md-9">
+            <img src="{{ marsdata.img_url }}" alt="Mars Image" class="float-center" style="width:100% ">
+          </div>  
+          <div class="col-md-3">
+            <section>
+              <h2>Latest Headline: {{ marsdata.headline }}</h2>
+              <h4>{{ marsdata.blurb }} </h4>
+            </section>
+            <hr class="my-4">
+              <h2> Mars Quick Facts </h2>
+              <table class="table">
+                {{ marsdata.mars_table | safe }}
+              </table>
+            </div>
+        </div>
+        </section>
+        <hr class="my-4">
     </div>
-    <hr class="my-4">
-  </div>
 
    <div class="container-fluid">
     <div class="p-3 mb-2 bg-white text-dark">
